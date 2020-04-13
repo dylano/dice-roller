@@ -2,7 +2,9 @@
   <div>
     <div class="dice">
       <div>
-        <span class="roll-total">{{ diceSum }}</span>
+        <span class="roll-total" :class="{ highlight: diceSum > 0 }" @click="reset()">
+          {{ diceSum }}
+        </span>
       </div>
       <div class="die" v-for="idx in numDice" :key="idx">
         <button
@@ -11,7 +13,7 @@
           @mouseenter="hover(true, idx)"
           @mouseleave="hover(false, idx)"
         >
-          <img class="die-img" :src="imgPath(idx)" :alt="`d${sides}`" />
+          <img class="die-img" :src="imgPath(idx)" :alt="`d${sides}-${idx}`" />
         </button>
         <span class="die-result">{{ val(idx) }}</span>
       </div>
@@ -33,7 +35,6 @@ export default {
   },
   data() {
     return {
-      resultStr: '',
       rolls: [0],
       activeDice: 0
     };
@@ -54,6 +55,10 @@ export default {
     },
     val(index) {
       return this.rolls[index - 1] ? this.rolls[index - 1] : '';
+    },
+    reset() {
+      this.rolls = [0];
+      this.activeDice = 0;
     },
     imgPath(idx) {
       const base = `d${this.sides}`;
@@ -83,10 +88,6 @@ export default {
   grid-template-columns: 50px repeat(auto-fit, minmax(0, 1fr));
 }
 
-.spin {
-  transform: rotate(100);
-}
-
 .die {
   display: flex;
   flex-direction: column;
@@ -111,11 +112,19 @@ export default {
   height: 1.5rem;
 }
 
+.highlight {
+  color: yellow;
+  background-color: black;
+  border-radius: 50%;
+}
+
 .roll-total {
-  font-size: 1.5rem;
-  font-weight: 800;
+  margin: 2rem 5px;
   display: flex;
   justify-content: center;
-  padding-top: 2rem;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 800;
+  transition: all 200ms ease-in-out;
 }
 </style>
