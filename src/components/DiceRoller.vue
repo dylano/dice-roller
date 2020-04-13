@@ -28,7 +28,7 @@ export default {
     },
     numDice: {
       type: Number,
-      default: 5
+      default: 4
     }
   },
   data() {
