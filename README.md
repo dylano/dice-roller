@@ -1,3 +1,4 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4e4e3b58-9998-4a10-8a60-523fc00cc38c/deploy-status)](https://app.netlify.com/sites/rollaway/deploys)
 # dice-roller
 
 ## Description
