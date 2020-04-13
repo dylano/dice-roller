@@ -3,7 +3,7 @@
 
 ## Description
 
-Deployment: https://rollaway.netlify.com/
+Deployment: https://rollaway.netlify.app/
 
 A dice roller with a dead simple interface for use on mobile.
 Click or touch the type and quantity of die you need to roll. 
